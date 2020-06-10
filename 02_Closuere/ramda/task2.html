@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 2 - Converge</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+
+    <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h1>User's data</h1>
+            <form id="f">
+              <div class="form-group">
+                <input name="name" value="Bill" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <input name="surname" value="Gates" type="text" class="form-control">
+              </div>
+              <div class="form-group">
+                <input name="age" value="64" type="text" class="form-control">
+              </div>
+              <button class="btn btn-primary">Send data</button>
+            </form>
+          </div> <!-- /.col-md-4 -->
+          <div class="col-md-6 offset-md-1">
+            <h1>Result</h1>
+            <div id="res"></div>
+          </div>
+        </div> <!-- /.row  -->
+
+    </div><!-- /.container -->  
+
+
+   <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.27.0/ramda.min.js"
+      integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      // name, surname, age
+      const $ = document.querySelector.bind(document)
+      const f = $('#f')
+      const res = $('#res')
+      
+      const getFormData = f => ({
+         name: f.name.value,
+         surname: f.surname.value,
+          age: f.age.value,
+      })
+      const msg = (name, surname, age) => `
+      Hello ${name} ${surname}<br>
+      You have ${age} years old`;
+
+      const groupData = R.converge(msg, [
+        v => v.name, 
+        v => v.surname, 
+        v => v.age 
+      ]);
+      document.addEventListener('submit', e => {
+          e.preventDefault();
+          const f = e.target;
+         if(f.id != "f") return;
+          res.innerHTML = groupData(getFormData(f))
+      })
+
+
+    </script>
+  </body>
+</html>

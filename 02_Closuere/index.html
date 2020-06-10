@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Closure</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      body {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        max-width: 80%;
+        margin: auto;
+      }
+      .title {
+        margin-bottom: 1rem;
+        text-align: center;
+      }
+      .nav {
+        display: grid;
+        grid-gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+        padding-bottom: 2rem;
+      }
+      .nav__item {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: #22556e;
+        padding: 1rem;
+        text-align: center;
+        text-decoration: none;
+        font-size: 1.1rem;
+        color: #fff;
+      }
+
+      .nav__item:hover {
+        background: #4799b7;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="title">Closure</h1>
+      <div class="nav">
+        <a class="nav__item" href="index1.html">index_1</a>
+        <a class="nav__item" href="closure.html">closure.html</a>
+        <a class="nav__item" href="counter.html">counter_html</a>
+      </div>
+      <h1 class="title">Labs</h1>
+      <div class="nav">
+        <a class="nav__item" href="LABS/lab_1.html">Lab 1</a>
+        <a class="nav__item" href="LABS/lab_2.html">Lab 2</a>
+        <a class="nav__item" href="LABS/lab_3.html">Lab 3</a>
+        <a class="nav__item" href="LABS/lab_4.html">Lab 4</a>
+        <a class="nav__item" href="LABS/lab_5.html">Lab 5</a>
+      </div>
+      <h1 class="title">Ramda</h1>
+      <div class="nav">
+        <a class="nav__item" href="ramda/curry.html">Curry</a>
+        <a class="nav__item" href="ramda/task1.html">task 1</a>
+        <a class="nav__item" href="ramda/task2.html">task 2</a>
+        <a class="nav__item" href="ramda/task3.html">task 3</a>
+        <a class="nav__item" href="ramda/task4.html">task 4</a>
+        <a class="nav__item" href="ramda/task5.html">task 5</a>
+      </div>
+
+      <h1 class="title">Home</h1>
+      <div class="nav">
+        <a class="nav__item" href="HOME/work_1.html">work_1</a>
+        <a class="nav__item" href="HOME/work_2.html">work_2</a>
+        <a class="nav__item" href="HOME/work_3.html">work_3</a>
+        <a class="nav__item" href="HOME/work_4.html">work_4</a>
+      </div>
+    </div>
+
+    <script>
+      document
+        .querySelectorAll(".nav__item")
+        .forEach((item) => (item.target = "_blank"));
+    </script>
+  </body>
+</html>

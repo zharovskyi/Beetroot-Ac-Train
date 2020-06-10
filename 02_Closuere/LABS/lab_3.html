@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab 3</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Lab 3</h1>
+
+      <script>
+        /* Todo:
+            Есть 3 логгера, которые выводят разные заголовки и текст сообщений
+            Задача - реализовать такую же функциональность выполняемую одной функцией  
+        */
+        function log(title) {
+          return function (msg) {
+            console.log(`${title}: ${msg}`);
+          };
+        }
+
+        /*        function log1(message) {
+          let out = `LOG_1: ${message}`;
+          console.log(out);
+        }
+        function log2(message) {
+          let out = `LOG_2: ${message}`;
+          console.log(out);
+        }
+        function log3(message) {
+          let out = `LOG_3: ${message}`;
+          console.log(out);
+        }
+        log1("Message 1");
+        log2("Message 2");
+        log3("Message 3"); */
+
+        const l1 = log("Warning");
+        const l2 = log("Error");
+
+        l1("Message 1");
+        l1("Message 2");
+        l2("Message 1");
+        l2("Message 2");
+      </script>
+    </div>
+  </body>
+</html>

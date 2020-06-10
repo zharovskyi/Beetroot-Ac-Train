@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Closure</title>
+    <meta charset="utf-8" />
+    <script src="_/js/script.js"></script>
+  </head>
+  <body>
+    <h1>Closure</h1>
+    <ul id="results"></ul>
+
+    <script>
+      /* ===========================================  */
+      /* 
+      1. В замыкания попадают только те сущности на которые
+          ссылается внутренняя функция 
+         Напрямую из кода нельзя получить доступ к сущностям, находящихся 
+          в замыкании 
+        */
+
+      // function test() {
+      //   const a = 5;
+      //   const b = 10;
+      //   return function () {
+      //     debugger;
+      //     console.log(`${a + b}`);
+      //   };
+      // }
+      // const fn = test();
+      // fn();
+
+      /* ===========================================  */
+      /* 
+      2. В замыкания также попадают аргументы функций 
+        Между вызовами функций из замыкания не уничтожаются 
+     */
+
+      // function fn(greeting) {
+      //   var a = "!";
+      //   return function (name) {
+      //     console.log(`${greeting} ${name} ${a}`);
+      //   };
+      // }
+      // //-------------
+      // const f1 = fn("Hi");
+      // const f2 = fn("Hello");
+      // //-------------
+      // f1("Bill");
+      // f1("Tom");
+      // f2("Bill");
+      // f2("Tom");
+      // f2("Tom");
+
+      /* ===========================================  */
+      /* 
+         3. Даже если мы уничтожим внешнюю функцию, замыкание будет работать 
+      */
+
+      // function fn(greeting) {
+      //   return function (name) {
+      //     console.log(`${greeting} ${name}`);
+      //   };
+      // }
+
+      // const f = fn("Hello");
+      // console.log(fn);
+      // fn = null; // удаляем функцию
+      // console.log(fn);
+      // f("Bill"); // Hello Bill
+
+      /* ===========================================  */
+      /*
+       4. В замыкания также входят функции родительского LE,
+        которые вызываются в  возвращаемой функции 
+        */
+      // function fn() {
+      //   const name = "Bill";
+      //   function inner() {
+      //     return "Hello " + name;
+      //   }
+
+      //   return function () {
+      //     debugger;
+      //     console.log(inner());
+      //   };
+      // }
+
+      // const f = fn();
+      // f();
+      /* ===========================================  */
+      /* 
+       Провести рефакторинг кода так, чтобы можно было 
+        передавать   языковую переменную как аргумент функции, например 
+            const bill = greet("Bill");
+            bill("en");
+            bill("es");
+       */
+
+      // let lang = "en";
+
+      // function greet(name) {
+      //   return function (lang) {
+      //     if (lang === "en") {
+      //       console.log(`Hello ${name}`);
+      //     }
+      //     if (lang === "es") {
+      //       console.log(`Hola ${name}`);
+      //     }
+      //   };
+      // }
+      // const bill = greet("Bill");
+      // console.log(bill);
+      // bill("en");
+      // bill("es");
+      /* ===========================================  */
+
+      /* 
+        5. Пример замыкания функции на глобальную переменную 
+        */
+
+      let out;
+
+      function fn(msg) {
+        out = function (name) {
+          console.log(`${msg} ${name}`);
+        };
+      }
+      fn("Hi"); // надо обязательно вызвать иначе при вызове out будет error !!!
+
+      out("Bill"); // Hello Bill
+      fn("hola");
+      out("Tom");
+      /* ===========================================  */
+      //-------------
+    </script>
+  </body>
+</html>

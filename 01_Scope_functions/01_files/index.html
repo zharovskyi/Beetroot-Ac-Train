@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+	<title>Lexical environment</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <style>
+        *{margin:0;padding:0;box-sizing:border-box}body{font-family:Arial,Helvetica,sans-serif}.container{max-width:80%;margin:auto}.title{margin-bottom:1rem;text-align:center}.nav{display:grid;grid-gap:1rem;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));padding-bottom:2rem}.nav__item{display:flex;justify-content:center;align-items:center;background:#22556E;padding:1rem;text-align:center;text-decoration:none;font-size:1.1rem;color:#fff}.nav__item:hover{background:#4799B7}
+       </style>
+</head>
+<body>
+	<div class="container">
+		<h1 class="title">Lexical environment</h1>
+		<div class="nav">
+			<a  class="nav__item" href="index_1.html">index_1</a>
+            <a  class="nav__item" href="func.html">Func</a>
+            <a  class="nav__item" href="global_context.html">Global context</a>
+            <a  class="nav__item" href="function_declaration.html">Function declaration</a>
+		</div>
+
+
+        <h1 class="title">Tasks</h1>
+        <div class="nav">
+            <a  class="nav__item" href="tasks/1.js">task 1</a>
+            <a  class="nav__item" href="tasks/2.js">task 2</a>
+            <a  class="nav__item" href="tasks/3.js">task 3</a>
+            <a  class="nav__item" href="tasks/4.js">task 4</a>
+         </div>
+
+        <h1 class="title">HOME</h1>
+        <div class="nav">
+            <a  class="nav__item" href="HOME/work_1.html">work 1</a>
+            <a  class="nav__item" href="HOME/work_2.html">work 2</a>
+        </div>
+
+    </div>  <!-- /.container -->
+
+
+
+<script>
+	document.querySelectorAll('.nav__item')
+            .forEach(item => item.target="_blank");
+</script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 4</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.27.0/ramda.min.js" integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck=" crossorigin="anonymous"></script>
+    <script>
+      const users = [
+        { name: "Bill", age: 31, height: 165 },
+        { name: "Sally", age: 29, height: 173 },
+        { name: "Tom", age: 32, height: 163 },
+        { name: "Fill", age: 28, height: 161 },
+        { name: "Ashley", age: 29, height: 167 },
+        { name: "Pete", age: 29, height: 166 }
+      ];
+
+      /* Провести сортировку по height, age, name одновременно */
+       const {sort, sortWith, prop, ascend, descend} = R;
+       
+      /* const sortUsers = sortWith([
+         ascend(prop('age')),
+         descend(prop('height'))
+      ]); */
+      const sortUsers = sortWith([
+         ascend(R.pipe(prop('name'), R.toLower)),
+         descend(prop('height'))
+      ]);
+     
+      console.log(sortUsers(users));
+      
+    </script>
+  </body>
+</html>

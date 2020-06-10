@@ -1,0 +1,12 @@
+{
+  "name": "JSAdvanced_Lesson_2",
+  "version": "1.0.0",
+  "description": "Beetroot JavaScript advanced",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start -s -w -f=\"./index.html\" --no-notify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

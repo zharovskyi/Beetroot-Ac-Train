@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Panel App</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-md navbar-light bg-light mb-1">
+      <img class="logo-img" src="i/beetroot_academy.svg" />
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <section id="content-page" class="col-md-4 content-page">
+          <p>Welcome, <span id="userName" class="text-danger h5">Jim!</span></p>
+
+          <form class="form-inline mb-5" autocomplete="off">
+            <input
+              type="text"
+              class="form-control"
+              id="userNameInput"
+              placeholder="Update Your Username"
+            />
+          </form>
+
+          <form name="fontSizeForm" class="mb-5">
+            <h4>Font size:</h4>
+            <div class="form-check">
+              <input
+                type="radio"
+                name="fontSize"
+                class="form-check-input"
+                id="small"
+                value="small"
+                checked
+              />
+              <label class="form-check-label" for="small">Small</label>
+            </div>
+            <div class="form-check">
+              <input
+                type="radio"
+                class="form-check-input"
+                name="fontSize"
+                value="large"
+                id="large"
+              />
+              <label class="form-check-label" for="large">Large</label>
+            </div>
+          </form>
+        </section>
+
+        <div class="col-md-8">
+          <h3>Задачи</h3>
+          <ul class="list-group">
+            <li class="list-group-item">
+              Имя пользователя, отображаемое в
+              <b class="text-danger"
+                >&laquo;span id="userName"&raquo;Jim!&laquo;/span&raquo;</b
+              >
+              должно менятся на то которое вводим в поле с
+              <b class="text-danger">id="userNameInput"</b>
+            </li>
+            <li class="list-group-item">
+              при переключении <b class="text-danger">checkboxes Font size</b> в
+              положение <b class="text-danger">Large</b> размер шрифта в
+              элементе
+              <b class="text-danger">&laquo;section id="content-page"&raquo;</b>
+              должен увеличиваться на 6px, переключении в
+              <b class="text-danger">Small</b> - восстанавливается до дефолтного
+            </li>
+            <li class="list-group-item">
+              При перезагрузке страницы значения имени пользователя, высоты
+              шрифта должны отображаться такими, какими они были установлены
+              перед закрытием страницы
+            </li>
+            <li class="list-group-item">
+              Задание выполняется на ванильном JavaScript<br />Подсказка -
+              страница должна иметь состояние которое хранится в свойствах
+              объета
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/task_2.js"></script>
+  </body>
+</html>

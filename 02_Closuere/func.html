@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Функции</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="_/css/style.css" />
+    <script src="_/js/script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Функции</h1>
+      <ul id="results"></ul>
+      <script>
+        function test() {
+          console.dir(arguments);
+        }
+        test(1, 2, 3, 4);
+
+        function withRest(...rest) {
+          console.dir(rest);
+        }
+        withRest(1, 2, 3, 4);
+      </script>
+    </div>
+  </body>
+</html>

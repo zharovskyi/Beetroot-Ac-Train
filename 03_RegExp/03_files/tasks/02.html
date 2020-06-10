@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 2</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <s tyle>
+    .regpre {
+    line-height: 2;
+    margin: 1rem 0;
+    font-size: 2rem;
+    }
+    .regpre span {
+    background: #eee;
+    padding: 1px;
+    outline: 1px solid #999;
+    }
+    </style>
+</head>
+
+<body>
+  <div class="container">
+    <pre id="regpre" class="regpre"></pre>
+  </div>
+
+  <script>
+    const regpre = document.getElementById("regpre");
+    const out = (st, re) => regpre.innerHTML = st.replace(re, st => `<span>${st}</span>`);
+
+
+    /*     ===========================================================
+     Регу  лярным выраженим вытащить из строки str код оператора - первые 3 цифры 
+     и вы  вести эту информацию в консоль в виде
+       
+     Code  : 063
+     Code  : 067
+   Code: 099
+   =================================================================  */
+    str = `063-500-4444
+(067) 333-5555
+  0994  565423`;
+
+    cons  t re = /\(?(\d{3})\)?[\s-]?(\d{3})[\s-]?(\d{4})/g
+
+    out(str, re);
+    console.log(str.replace(re, "Code: $1, phone $2-$3"))
+
+  </script>
+</body>
+
+</html>

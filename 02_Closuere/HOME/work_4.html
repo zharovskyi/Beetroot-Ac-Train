@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Task 1</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <script>
+      function doMath(a, b, c) {
+        console.log(`${this.firstName} adds ${a + b + c}`);
+      }
+
+      const ob = {
+        firstName: "Bill",
+      };
+
+      /*
+          Реализовать функцию bind которая будет возвращать
+          нижеприведенный результат
+         Создать 2 реализации - с использованием ES 5, и ES 6 
+      */
+      /* function bind(ob, fn) {
+        const rest = [].slice.call(arguments, 2);
+        return function () {
+          const inner = [].slice.call(arguments);
+          const allArgs = rest.concat(inner);
+          return fn.apply(ob, allArgs);
+        };
+      } */
+      function bind(ob, fn, ...rest) {
+        return function (...inner) {
+          return fn.apply(ob, [...rest, ...inner]);
+        };
+      }
+
+      bind(ob, doMath, 1, 2, 3)(); // Bill adds 6
+      bind(ob, doMath)(1, 2, 3); // Bill adds 6
+      bind(ob, doMath, 1)(2, 3); // Bill adds 6
+      bind(ob, doMath, 1, 2)(3); // Bill adds 6
+      bind(ob, doMath, 1, 2, 3)(4, 5, 6); // Bill adds 6
+    </script>
+  </body>
+</html>

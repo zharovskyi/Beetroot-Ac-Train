@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task_1</title>
+  </head>
+  <body>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.27.0/ramda.min.js"
+      integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck="
+      crossorigin="anonymous"
+    ></script>
+    <script>
+      const players = [
+        { name: "Bill", score: 4 },
+        { name: "Tom", score: 5 },
+        { name: "Julia", score: 2 },
+        { name: "John", score: 4 },
+        { name: "ashley", score: 6 }
+      ];
+
+      /* Найти игрока с наибольшим  score */
+      const sortByScore = R.sort((a,b) => b.score - a.score)
+      const getName = R.prop('name')
+
+      /* const getTopPlayer = function (arr) {
+        let res = sortByScore(arr);
+        res = R.head(res)
+        res = getName(res)
+        return res
+        console.log(getTopPlayer(players))
+      } */
+      const getTopPlayer = R.pipe(
+        sortByScore, 
+        R.head, 
+        getName
+      );
+      console.log(getTopPlayer(players))
+
+     /*  const sortByName = R.sort((a,b) => 
+        a.name.toLowerCase().localeCompare(b.name.toLowerCase())
+      ); */
+
+      const sortByName = R.sortBy(
+        R.pipe(R.prop('name'), R.toLower)
+      );
+      const getTopPlayerByName = R.pipe(
+        sortByName, 
+        R.head, 
+        getName
+      );
+      console.log(getTopPlayerByName(players))
+      
+
+    </script>
+  </body>
+</html>

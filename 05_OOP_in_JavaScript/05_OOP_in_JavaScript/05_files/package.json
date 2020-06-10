@@ -1,0 +1,31 @@
+{
+  "name": "Practice_OOP_Beetroot_JS_Advanced",
+  "version": "1.0.0",
+  "description": "practice OOP with ES6,7 syntax",
+  "main": "index.js",
+  "author": "Beetrrot Academy",
+  "license": "MIT",
+  "scripts": {
+    "start": "webpack-dev-server --mode development --hide-modules  --open",
+    "build": "webpack --mode production",
+    "postbuild": "lite-server --baseDir='public'"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.10.2",
+    "@babel/plugin-proposal-object-rest-spread": "^7.10.1",
+    "@babel/preset-env": "^7.10.2",
+    "babel-loader": "^8.1.0",
+    "cross-env": "^7.0.2",
+    "html-webpack-plugin": "^4.3.0",
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "dependencies": {
+    "lite-server": "^2.5.4",
+    "redux": "^4.0.5",
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0",
+    "shortid": "^2.2.15"
+  }
+}

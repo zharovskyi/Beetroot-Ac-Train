@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab 2</title>
+    <meta charset="utf-8" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="../_/css/style.css" />
+    <script src="../_/js/script.js"></script>
+  </head>
+  <body>
+    <div class="container">
+      <ul id="results"></ul>
+      <div id="tickets"></div>
+
+      <div id="box"></div>
+      <div id="box1"></div>
+
+      <script>
+        function animateIt(id, tick = 150) {
+          let el = document.getElementById(id);
+          let t = 0;
+          const handle = setInterval(function () {
+            if (t > tick) {
+              clearInterval(handle);
+              assert(true, t);
+              return;
+            }
+            t++;
+            el.style.left = el.style.top = t + "px";
+          }, 10);
+        }
+        animateIt("box");
+        animateIt("box1", 300);
+      </script>
+    </div>
+    <!-- /.container-->
+  </body>
+</html>

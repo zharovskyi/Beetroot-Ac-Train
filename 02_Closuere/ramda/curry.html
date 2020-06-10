@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+     <title>Curry function</title>
+     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  </head>
+  <body>
+      <div class="container">
+     		<h1 class="h3">Curry functions</h1>
+        <p>Curry function - это преобразование функции с множеством аргументов в набор вложенных функций с одним аргументом.</p>
+        <p>При вызове каррированной функции с передачей ей одного аргумента, она возвращает новую функцию, которая ожидает поступления следующего аргумента</p>
+        <h2 class="h4">Зачем нужны каррированные функции</h2>
+        <ul>
+          <li>Функции можно разбивать на маленькие кусочки, которые потом можно перемспользовать</li>
+          <li>Код становится лаконичный, легко читаемый и легко тестируемый.</li>
+          <li>Можно расширять функции, добавлять им различные методы, и этим методам добавлять различные возможности.</li>
+          <li>Код соответствует принципам SOLID<br>S -> single responsibility<br>O -> open to extension closed to modification 
+          </li>
+       </ul>
+
+        <a href="https://blog.bitsrc.io/understanding-currying-in-javascript-ceb2188c339" target="_blank">Подробнее</a>
+      </div>
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.27.0/ramda.min.js" integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck=" crossorigin="anonymous"></script>
+    <script>
+     
+    
+      function sum (a, b) {
+        return a + b;
+      }
+      /* const currySum = R.curry(sum)
+      const sumWith3 = currySum(3)
+      console.log(sumWith3(10))
+      console.log(sumWith3(20))
+ */
+ 
+/* 
+- получить ids стандартным способом   
+- получить свойство объекта через curry функцию  - get   
+- показать каррирование map, как пример - getNames    
+https://swapi.dev/api/films    -> results, titles  
+*/
+const users = [
+        {id: 1, name: 'Bill'},
+        {id: 2, name: 'Rachel'},
+        {id: 3, name: 'Tom'},
+        {id: 4, name: 'Jeck'}
+      ];
+const getNames = R.pluck('name');
+console.log(getNames(users))
+
+const ids = users.map(u => u.id)
+//const get = (prop, ob) => ob[prop]
+
+const get = R.curry((prop, ob) => ob[prop])
+const names = users.map(get('name'))
+
+const map = R.curry((fn, ob) => ob.map(fn))
+
+const getItems = map(get('name'))
+
+// console.log(names)      
+// console.log(getItems(users))      
+
+/* fetch('https://swapi.dev/api/films')
+.then(r => r.json())
+.then( ({results}) => results.map(item => console.log(item.title)))
+ */
+
+/* fetch('https://swapi.dev/api/films')
+.then(r => r.json())
+.then(get('results'))
+.then(map(get('title')))
+.then(console.log)
+ */
+const getTitles = R.pipe(
+  R.prop('results'),
+  R.pluck('title')
+)
+
+ fetch('https://swapi.dev/api/films')
+.then(r => r.json())
+.then(getTitles)
+.then(console.log)
+     
+
+
+
+
+
+    </script>
+  </body>
+</html>

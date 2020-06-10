@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 5</title>
+  </head>
+  <body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ramda/0.27.0/ramda.min.js" integrity="sha256-b9w9dH2wg4H3c1vaJkmkV7r8AxhRan6+41iRnFB6jck=" crossorigin="anonymous"></script>
+    <script>
+      /* Показать композицию функций */
+      const {compose, tail, split, map, fromPairs} = R;
+      const qs="?name=Bill&surname=Geitz&age=66";
+
+      /* const parseQs = R.compose(
+        fromPairs, 
+        map(split('=')),  
+        split('&'),
+        tail
+      ); */
+
+      const parseQs = R.pipe(
+        tail,
+        split('&'),
+        map(split('=')),  
+      fromPairs
+        
+      );
+      console.log(parseQs(qs));
+      
+    </script>
+  </body>
+</html>

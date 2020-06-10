@@ -1,0 +1,11 @@
+.regpre {
+  line-height: 2;
+  margin: 1rem 0;
+  font-size: 1.5rem;
+}
+.regpre span {
+  background: #eee;
+  padding: 1px;
+  outline: 1px solid #999;
+  margin-right: 4px;
+}

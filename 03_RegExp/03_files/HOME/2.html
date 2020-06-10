@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Home 2.html</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <style>
+        .out span {
+            color: tomato;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <p id="out" class="out">Javascript is an exelent languare.<br> We like to learn javascript.<br> JavaScript was created in 1994.
+        </p>
+        <input id="btn" class="btn btn-primary" type="button" value="Click me">
+    </div>
+    <!-- 
+    При клике на button в параграфе с id="out заменить все словосочетания
+    javascript   на <span>JAVASCRIPT</span>.
+-->
+    <script>
+        const regpre = document.getElementById("out");
+        let st = regpre.textContent;
+        let re = /javascript+/gi;
+
+        console.log(st.replace(re, "$1"));
+
+        function out(st, re) {
+            regpre.innerHTML = st.replace(re, st => `<span>${st}</span>`);
+        }
+        document.addEventListener('click', change);
+
+        function change(e) {
+
+            if (e.target.id === "btn") {
+                console.log(regpre.textContent);
+                out(st, re);
+                st.replace(re, "<span>JAVASCRIPT</span>")
+            } else {
+                return;
+            }
+        }
+    </script>
+
+
+</body>
+
+</html>

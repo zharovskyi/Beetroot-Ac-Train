@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+
+<head>
+    <title>Home - 1.html</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <div id="container">
+        <pre class="regpre" id="regpre"></pre>
+    </div>
+
+    <script>
+        const regpre = document.getElementById("regpre");
+
+        function out(st, re) {
+            regpre.innerHTML = st.replace(re, st => `<span>${st}</span>`);
+        }
+        /*  Начальные 3 цифры в каждом номере - это код оператора
+         Сделать вывод  в консоль таким
+        (063) 111 1234
+        (333) 456 8768
+        (444) 657 5547
+        */
+
+        let st = `063-111-1234
+      (333)456-8768
+      4446575547`;
+        let re = /\(?(\d{3})\)?[\s-]?(\d{3})[\s-]?(\d{4})/g;
+        out(st, re);
+        console.log(st.replace(re, "($1) $2 $3"));
+    </script>
+
+
+</body>
+
+</html>

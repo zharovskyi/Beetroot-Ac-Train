@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Task 3</title>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <style>
+      .regpre {
+        line-height: 2;
+        margin: 1rem 0;
+        font-size: 2rem;
+      }
+      .regpre span {
+        background: #eee;
+        padding: 1px;
+        outline: 1px solid #999;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <pre id="regpre" class="regpre"></pre>
+    </div>
+
+<script>
+const regpre = document.getElementById("regpre");
+const out = (st, re) => regpre.innerHTML = st.replace(re, st => `<span>${st}</span>`);
+
+/*  ===========================================================
+Регулярным выраженим в строке str убрать повторения слов
+Результат вывести в консоль
+    it was the thing
+=================================================================  */
+str = `it was the the thing thing`;
+
+const re = /(\w+)\s?(?=\1)/g
+
+out(str, re);
+console.log(str.replace(re, ""))
+
+</script>
+  </body>
+</html>

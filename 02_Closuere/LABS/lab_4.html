@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Lab 4</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <h1>Lab 4</h1>
+    <script>
+      /* Todo:
+            Функция subtract возвращает разность двух чисел a - b
+            Реализовать функцию, которая принимает аргументом функцию add
+            но возвращать будет разность  b - a
+           */
+
+      /* function subtract(a, b) {
+        return a - b;
+      } */
+
+      function subtract(a) {
+        return function (b) {
+          return a - b;
+        };
+      }
+
+      function reverce(fn) {
+        return function (a, b) {
+          return subtract(b, a);
+        };
+      }
+      // usage:
+      /* console.log(subtract(10, 5)); // return  5
+
+      const subtractReverce = reverce(subtract);
+      console.log(subtractReverce(10, 5)); // return  -5 */
+
+      const f1 = subtract(10);
+      console.log(f1(5, 2, "test"));
+      console.log(f1(1));
+    </script>
+  </body>
+</html>
