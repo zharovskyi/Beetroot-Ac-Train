@@ -20,11 +20,6 @@ export const data = {
   ],
 };
 
-export const panelData  = {
-  userName: "Bill",
-  fontSize: 'small'
-}
-
 export const tasks = [
   {
     id: id(),
