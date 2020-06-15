@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <title>Users</title>
+  </head>
+  <body>
+    <div class="container" id="users"></div>
+
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "https://jsonplaceholder.typicode.com/users");
+      xhr.onreadystatechange = handleResponse;
+      xhr.send();
+
+      function handleResponse() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          addUsersToPage(JSON.parse(xhr.response));
+        }
+      }
+
+      function generateListItems(users) {
+        return users
+          .map(u => `<li class="list-group-item">${u.name}</li>`)
+          .join("");
+      }
+
+      function generateUnorderedList(listItems) {
+        return `<ul class="list-group">${listItems}</ul>`;
+      }
+
+      function addUsersToPage(users) {
+        document.getElementById("users").innerHTML = generateUnorderedList(
+          generateListItems(users)
+        );
+      }
+
+      /*  Провести refactoring кода, используя  Promise
+        чтобы вызов функций был следующим
+       */
+
+      /*
+      getJSON("https://jsonplaceholder.typicode.com/users")
+        .then(generateListItems)
+        .then(generateUnorderedList)
+        .then(addUsersToPage);
+        */
+    </script>
+  </body>
+</html>
