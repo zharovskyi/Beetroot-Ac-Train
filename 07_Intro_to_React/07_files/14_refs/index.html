@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lifecycle React</title>
+    <link rel="stylesheet"  href="../assets/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/prop-types.js"></script>
+    <script  src="../assets/js/babel.js"></script>
+
+    <script type="text/babel">
+      const root = document.getElementById("root");
+      Array.isArray(Array.prototype);
+
+      const range = n => Array.from({ length: n });
+
+      class App extends React.Component {
+        state = { count: 1 };
+
+        render() {
+          return (
+            <div className="container pt-5">
+              <button className="btn btn-primary">Add Recipient</button>
+              <form>
+                <h1>Emails</h1>
+                <div className="form-group row">
+                  <label className="col-md-1 col-form-label">Email</label>
+                  <div className=" col-md-3">
+                    <input className="form-control" />
+                  </div>
+                </div>
+              </form>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>

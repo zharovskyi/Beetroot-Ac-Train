@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamicly generate components</title>
+    <link  rel="stylesheet"  href="../assets//css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/prop-types.js"></script>
+    <script  src="../assets/js/babel.js"></script>
+
+    <!-- https://swapi.co/api/people/?format=json -->
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      class App extends React.Component {
+        state = {
+          results: [],
+          filter: ""
+        };
+
+        render() {
+          return (
+            <div className="container">
+              <h1>People</h1>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Styling component</title>
+    <link rel="stylesheet" href="../assets/css/style.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/prop-types.js"></script>
+    <script src="../assets/js/babel.js"></script>
+
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
+
+// ----  .box, .box__circle, .box__shape, .box__lemon 
+
+      function Box(props) {
+        return (
+          <div
+            className="box box__circle"
+            style={{ border: "3px solid tomato" }}
+          >
+            Box
+          </div>
+        );
+      }
+
+      const App = (
+        <div className="wrap">
+            <Box />
+            <Box />
+          </div>
+      );
+
+      ReactDOM.render(App, rootElement);
+    </script>
+  </body>
+</html>

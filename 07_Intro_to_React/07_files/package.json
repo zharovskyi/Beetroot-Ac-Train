@@ -1,0 +1,13 @@
+{
+  "name": "begin_React",
+  "version": "1.0.0",
+  "description": "Beetroot JavaScript advanced lesson begin React",
+  "main": "index.js",
+  "scripts": {
+    "start": "browser-sync start -s -w -f=\"./index.html\" --no-notify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+  
+}
