@@ -8,9 +8,9 @@ https://unpkg.com/react@16.13.1/umd/react.production.min.js
 <script  crossorigin  src="https://unpkg.com/babel-standalone@6.26.0/babel.min.js"></script>
 ------------------------- local 
    <script src="../assets/js/react.development.js"></script>
-    <script src="../assets/js/react-dom.development.js"></script>
-    <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel"></script>
+   <script src="../assets/js/react-dom.development.js"></script>
+   <script src="../assets/js/prop-types.js"></script>
+   <script  src="../assets/js/babel"></script>
 ==============================
 
 1. Основы работы React -  01_first_app/index.html 
@@ -22,6 +22,7 @@ https://unpkg.com/react@16.13.1/umd/react.production.min.js
 - используя React.createElement создать элемент h1 с классом "container"
 - вывести созданный элемент в элемент  <div id="root">
 - используя props элемента h1  вывести в его контент текущую дату
+
 ==================================================================
 
 - babel 
@@ -40,7 +41,7 @@ const el = <div className="conainer"
 --------------------------------------------- ////
 Перенести все атрибуты в константу props и вывести элемент как 
 ////  --------------------------------------- 
-const props {
+const props = {
   // todo 
 }
 <div {...props}/>
@@ -100,12 +101,11 @@ Hello React -  #66ccff, 3rem
 
 =================================== ЗАДАНИЕ СЛУШАТЕЛЯМ:
 - реализовать вычисление класса компонента на основе передаваемого в
-компонент свойства size="", то есть usage
+компонент свойства shape="", то есть usage
 ==================================================================
-
-<Box size="small" style={{ backgroundColor: "lightblue" }}/>
-<Box size="medium" style={{ backgroundColor: "green" }} />
-<Box size="large" style={{ backgroundColor: "pink" }} />
+ <Box shape="circle" style={{ backgroundColor: "pink" }} />
+<Box shape="shape" style={{ backgroundColor: "green" }} />
+<Box shape="lemon" style={{ backgroundColor: "yellow" }} />
 ------------------------------------------------------
 
 ==========================  STATE 

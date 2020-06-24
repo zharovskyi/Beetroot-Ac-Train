@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lifecycle React</title>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/prop-types.js"></script>
+    <script src="../assets/js/babel.js"></script>
+
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      class App extends React.Component {
+        state = { val: 0 };
+
+        componentDidMount() {
+          this.interval = setInterval(this.update, 1000)
+        }
+        
+        update = () => {
+          this.setState({val: this.state.val + 1})
+          console.log(this.state.val)
+        }
+
+        render() {
+          return (
+            <div className="container pt-5">
+              <button className="btn btn-success btn-lg" 
+                 onClick={this.update}
+                 >
+                {this.state.val}
+              </button>
+            </div>
+          );
+        }
+        
+        componentWillUnmount() {
+          clearInterval(this.interval)
+        }
+      }
+
+      class Wrap extends React.Component {
+
+        mount = () => ReactDOM.render(<App />, document.getElementById('a'))
+
+        unmount = () => ReactDOM.unmountComponentAtNode(document.getElementById('a'))
+
+        render(){
+          return <div className="container">
+              <button onClick={this.mount}>Mount</button>
+              <button onClick={this.unmount}>UnMount</button>
+              <div id="a"></div>
+            </div>
+        }
+
+      }
+
+      ReactDOM.render(<Wrap />, root);
+    </script>
+  </body>
+</html>

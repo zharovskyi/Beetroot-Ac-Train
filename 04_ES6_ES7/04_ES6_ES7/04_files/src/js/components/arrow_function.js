@@ -24,12 +24,12 @@ export function showCourses() {
 }
 */
 
-/* 
+
 const nums = [2, 120, 6, 12, 10, 78];
 export function sortNums() {
   return nums.sort((a, b) => a - b);
 }
- */
+
 
 // - this имеет такое значение как и содержащая ее область
 
@@ -46,7 +46,7 @@ export default function Courses() {
 */
 
 // Destruction
-/* 
+
 function getDate() {
   return [15, 7, 2016];
 }
@@ -55,14 +55,14 @@ export function showDate() {
   const [day, month, year] = getDate();
   console.log(`${day}, ${month}, ${year}`);
 }
-*/
 
-/* 
-function currentDate() {
-  return { d: 15, m: 7, y: 2016 };
-}
-export function showCurrentDate() {
-  const { d: day, m: month, y: year } = currentDate();
-  console.log(`${day}, ${month}, ${year}`);
-}
-*/
+
+
+// function currentDate() {
+//   return { d: 15, m: 7, y: 2016 };
+// }
+// export function showCurrentDate() {
+//   const { d: day, m: month, y: year } = currentDate();
+//   console.log(`${day}, ${month}, ${year}`);
+// }
+

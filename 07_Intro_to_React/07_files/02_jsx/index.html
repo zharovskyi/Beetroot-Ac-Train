@@ -1,20 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>JSX, props</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+</head>
+
+<body>
     <div class="container">
         <div id="root"></div>
     </div>
     <!-- ================ Script =================  -->
-        <script>
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/babel.js"></script>
 
-         const rootEl = document.getElementById('root')
-
+    <script type="text/babel">
+        const rootEl = document.getElementById("root"); const props = { className: "container", style: { color: "red", fontSize: "3rem" }, children: "HEy Oleh" }; const el = (
+        <React.Fragment>
+            <h1 {...props} />
+            <h1>Hello World</h1>
+        </React.Fragment>
+        ); ReactDOM.render(el, rootEl);
     </script>
-  </body>
+</body>
+
 </html>

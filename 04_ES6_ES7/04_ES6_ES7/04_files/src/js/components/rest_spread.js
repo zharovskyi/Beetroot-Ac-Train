@@ -1,16 +1,16 @@
 // Rest оператор  => применяется  при декларировании функции
 // Его задача - собрать (gather) аргументы в массив
 
-/* 
+
 function foo(...args) {
   console.log(args); // [1,2,3,4,5]
 }
 foo(1, 2, 3, 4, 5);
-*/
+
 
 // оператор Rest позволяют передавать функции любое количество аргументов.
 
-/* 
+/*
 function joinStaff(...staff) {
   console.log(staff); // ["Hello", "rest", "params"]
 
@@ -23,7 +23,7 @@ function joinStaff(...staff) {
 joinStaff("Hello", "rest", "params");
 */
 
-/* 
+/*
 function foo(x, ...args) {
   console.log(x); // 1
   console.log(args); // [2,3,4]
@@ -37,7 +37,7 @@ foo(1, 2, 3, 4);
 // массивов и объектов в несколько переменных
 // Например в несколько аргументов (при вызовах функции)
 
-/* 
+/*
 var arr1 = [1, 2, 3];
 var arr2 = [4, 5, 6];
 

@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Key prop in map</title>
-    <link rel="stylesheet"  href="../assets/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   </head>
   <body>
     <div id="root"></div>
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
-    
-<script type="text/babel">
+    <script src="../assets/js/babel.js"></script>
+
+    <script type="text/babel">
       const rootElement = document.getElementById("root");
 
       class App extends React.Component {
@@ -22,11 +22,47 @@
           { id: "a", value: "apple" },
           { id: "c", value: "cherry" },
           { id: "p", value: "peach" },
-          { id: "t", value: "tomato" }
+          { id: "t", value: "tomato" },
         ];
+        state = { items: [] };
+
+        addItem = () =>
+          this.setState(({ items }) => {
+            if (items.length === App.allItems.length) {
+              return null;
+            }
+            return {
+              items: [
+                ...items,
+                App.allItems.find((item) => !items.includes(item)),
+              ],
+            };
+          });
+
+        deleteItem = (id) => (e) =>
+          this.setState(({ items }) => ({
+            items: items.filter((item) => item.id !== id),
+          }));
 
         render() {
-          return <div className="container" />;
+          const { items } = this.state;
+          return (
+            <div className="container">
+              <button
+                disabled={items.length === App.allItems.length}
+                className="btn btn-primary mb-3"
+                onClick={this.addItem}
+              >
+                Add item
+              </button>
+              {items.map((item, index) => (
+                <div key={item.id} className="mb-3">
+                  <button onClick={this.deleteItem(item.id)}> - </button>{" "}
+                  {item.value} <input />
+                </div>
+              ))}
+            </div>
+          );
         }
       }
 

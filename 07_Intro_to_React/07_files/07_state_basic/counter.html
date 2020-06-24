@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Counter</title>
-    <link rel="stylesheet"  href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -12,24 +12,74 @@
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
+    <script src="../assets/js/babel.js"></script>
 
     <script type="text/babel">
       const root = document.getElementById("root");
 
       function App(props) {
+        const [counter, setCounter] = useState(0);
+        const [error, setError] = useState(null)
+        console.log(state)          
+//#region
+        const increment = () => {
+          setCounter(counter + 1)
+          setError(null)
+        }
+        const decrement = () => {
+          if(counter > 1) {
+            setCounter(counter - 1)
+          } else {
+              setError(`cannot be less then 1 😠`)
+          }
+        }
+        const reset = () => {
+          setCounter(0)
+          setError(null)
+        }
+
         return (
           <div className="container  pt-3">
-            <h1 className="mb-3">Counter 0</h1>
-            <button className="btn btn-primary mr-3">Increment</button>
-            <button className="btn btn-success  mr-3">Decrement</button>
-            <button className="btn btn-danger">Reset</button>
-            
-            
-          </div>
+            <h1 className="mb-3">Counter {counter}</h1>
+
+            <button onClick={increment}  className="btn btn-primary mr-3">Increment</button>
+            <button onClick={decrement} className="btn btn-success  mr-3">Decrement</button>
+            <button disabled={counter === 0} onClick={reset} className="btn btn-danger">Reset</button>
+            {
+               error && <marquee direction="right" className="mt-3">
+                  <p onClick={() => setError(null)}>{error}</p>
+              </marquee>
+            }
+         
+            </div>
         );
       }
-      ReactDOM.render(<App />, root);
+      //#endregion
+
+        const state  = [];  // [0][0, fn],   [1][null, fn]
+        let callCount = -1;
+
+        function useState(initVal) {
+           const id = ++callCount;
+            
+           if(state[id]) {
+              return state[id];
+           }
+          const setVal = newVal => {
+              state[id][0] = newVal;
+              renderHook();
+          }
+
+          const tuple = [initVal, setVal];
+          state.push(tuple)
+          return tuple;
+        }
+
+             function renderHook() {
+                callCount = -1;
+                ReactDOM.render(<App />, root)
+             }
+             renderHook();
     </script>
   </body>
 </html>

@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Start React</title>
-      <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
-  </head>
-  <body>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+</head>
+
+<body>
     <div id="root"></div>
 
-    <script></script>
-  </body>
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script>
+        const rootEl = document.getElementById("root");
+
+        // const el = document.createElement("h1");
+        // el.textContent = "Hello World";
+        // el.className = "container";
+
+        // rootEl.appendChild(el);
+
+        const el = React.createElement("div", {
+            className: "container",
+            children: [
+                React.createElement("h1", null, "Hello React"),
+                React.createElement("h1", null, "Hello World"),
+            ],
+        });
+        console.dir(el);
+
+        ReactDOM.render(el, rootEl);
+    </script>
+</body>
+
 </html>

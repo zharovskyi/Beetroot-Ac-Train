@@ -4,34 +4,46 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Props validate</title>
-   <link rel="stylesheet" href="../assets//css/bootstrap.min.css">
- </head>
+    <link rel="stylesheet" href="../assets//css/bootstrap.min.css" />
+  </head>
   <body>
     <div id="root"></div>
 
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
-    <!-- <script src="../assets/js/prop-types.js"></script> -->
-    <script  src="../assets/js/babel.js"></script>
-   
-<script type="text/babel">
-  const root = document.getElementById("root");
+    <script src="../assets/js/prop-types.js"></script>
+    <script src="../assets/js/babel.js"></script>
 
-  function App(props) {
-    return (
-      <div className="container">
-        <h1>
-          Hello {props.firstName} {props.lastName}
-        </h1>
-      </div>
-    );
-  }
+    <script type="text/babel">
+      const root = document.getElementById("root");
 
-  ReactDOM.render(<App firstName={true} />, root);
+      function App(props) {
+        return (
+          <div className="container">
+            <h1>
+              Hello {props.firstName} {props.lastName}
+            </h1>
+          </div>
+        );
+      }
+      /* const PropTypes = {
+        string(props, propName, componentName) {
+          if (typeof props[propName] !== "string") {
+            throw Error(`${propName} must be string`);
+          }
+        },
+      }; */
 
+      App.defaultProps = {
+        lastName: "Smith",
+      };
 
-</script>
+      App.propTypes = {
+        firstName: PropTypes.string.isRequired,
+        lastName: PropTypes.string.isRequired,
+      };
 
-
-</body>
+      ReactDOM.render(<App firstName="John" />, root);
+    </script>
+  </body>
 </html>

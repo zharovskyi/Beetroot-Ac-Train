@@ -6,69 +6,68 @@ var arr = [10, 20, 30];
 var a, b, c;
 var ob = { name: "John", age: 33 };
 
-/*
-[a,b,c] = arr;
-console.log(a,b,c);
-*/
+
+[a, b, c] = arr;
+console.log(a, b, c);
+
 
 // или можно так присваивать
-/*
-[a,b,c] = [33,44,55];
-console.log(a,b,c);
-*/
+
+[a, b, c] = [33, 44, 55];
+console.log(a, b, c);
+
 
 // Применение при вызове функции
-/*
+
 function foo() {
-    return [33,44,55];
+    return [33, 44, 55];
 }
-[a,b,c] = foo();
+[a, b, c] = foo();
 console.log(a, b, c);
-*/
 
 // Игнорирование значений
-/*
-[a,,b] = arr;
-console.log(a,b);
-*/
 
-/*
+[a, , b] = arr;
+console.log(a, b);
+
+
+
 var coords = "23.222333 - 44.333444";
-var [lat, lng] =  coords.split(' ');
+var [lat, lng] = coords.split(' ');
 console.log(lat, lng); //не то что хотели
-*/
 
-/*
+
+
 // Вот так будет правильно
-[lat, ,lng] =  coords.split(' ');
+[lat, , lng] = coords.split(' ');
 console.log(lat, lng);
-*/
+
 
 // Использование spread в деструктивных выражениях
-/*
-[a, ...b] = [1,2,3,4,5,6];
+
+[a, ...b] = [1, 2, 3, 4, 5, 6];
 console.log(a, b);
 console.log("b is array: ", Array.isArray(b));
-*/
+
 
 // Игнорирование значений
-/*
-[a,,, ...b] = [1,2,3,4,5,6];
+
+[a, , , ...b] = [1, 2, 3, 4, 5, 6];
 console.log(a, b);
-*/
+
 
 // Можно использовать в деструктивных выражениях знасение по умолчанию
-/*
-[a, b, c = 1000] = [11,22];
+
+[a, b, c = 1000] = [11, 22];
 console.log(a, b, c);
-*/
+
 
 // Destructing nested array
-/*
+
 var nums = [10, 20, [30, 40, 50]];
-var [firstNum, secondNum, [thirdNum, , fifthNum] ] = nums;
+var [firstNum, secondNum, [thirdNum, , fifthNum]] = nums;
 console.log(firstNum, secondNum, thirdNum, fifthNum);
-*/
+
 
 // Использование деструктивного присваивания как параметра функции
 /*
@@ -89,38 +88,38 @@ showNums(nums);
 */
 
 // Использование деструктивного присваивания с объектами
-/*
+
 
 var name, age;
 // синтаксис  деструктивного присваивания  объектов
 // !!! имена переменных должны совпадать с именами свойств объекта
 
-({name, age} = ob );
+({ name, age } = ob);
 console.log(`${name} has ${age} years old`);
-*/
+
 
 // Если все же надо изменить имена переменных, то делать надо так
-/*
+
 let x, y;
-({ name: x, age: y } = ob );
+({ name: x, age: y } = ob);
 console.log(`${x} has ${y} years old`);
-*/
+
 
 // Использование деструктивного присваивания  объектов как параметра функции
-/*
-function foo({a, b, c}) {
-    console.log(a, b, c);
-}
-foo("This", 'is', "desttucing");
-*/
 
-/*
-function log(msg, {course: courseName, publisher: publisherName}) {
-    console.log(`${msg}  ${courseName} by ${publisherName}`);
-}
+// function foo({ a, b, c }) {
+//     console.log(a, b, c);
+// }
+// foo(a: "This", b: 'is', c: "desttucing");
 
-log("Course", {course: 'JS Advanced', publisher: 'Beetroot academy' });
-*/
+
+
+// function log(msg, { course: courseName, publisher: publisherName }) {
+//     console.log(`${msg}  ${courseName} by ${publisherName}`);
+// }
+
+// log("Course", { course: 'JS Advanced', publisher: 'Beetroot academy' });
+
 
 /*
 var courseOb = {
@@ -153,61 +152,61 @@ getData(obData);
 // Rest properties с destruct - собирают оставшиеся от destruct
 // свойства  объекта  в новый объект
 
-/*
-var { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
-console.log(x); // 1
-console.log(y); // 2
-console.log(z); // { a: 3, b: 4 }
-*/
+
+// var { x, y, ...z } = { x: 1, y: 2, a: 3, b: 4 };
+// console.log(x); // 1
+// console.log(y); // 2
+// console.log(z); // { a: 3, b: 4 }
+
 
 //Spread properties в объекте инициализирут копирование
 // свойств из объекта в новый объект.
 
-/*
-let n = { x, y, ...z };
-console.log(n);  // { x: 1, y: 2, a: 3, b: 4 }
-*/
 
-/*
-let o1 = {
-    name: 'Tom',
-    age: 22
-};
-let o2 = {
-    phone: 333
+// let p = { x, y, ...z };
+// console.log(p);  // { x: 1, y: 2, a: 3, b: 4 }
 
-};
 
-let ob = { ...o1, ...o2};
-console.log(ob);
+
+// let o1 = {
+//     name: 'Tom',
+//     age: 22
+// };
+// let o2 = {
+//     phone: 333
+
+// };
+
+// let ob = { ...o1, ...o2 };
+// console.log(ob);
 
 
 //  при этом одноименные свойства перезаписываются по правилу
 //  приоритета у правого одноименного свойства
-let o3 = {
-    age: 33
-};
+// let o3 = {
+//     age: 33
+// };
 
-ob = { ...o1, ...o2, ...o3};
-console.log(ob);  // age:33
-*/
+// ob = { ...o1, ...o2, ...o3 };
+// console.log(ob);  // age:33
 
-/*
-function getObj(){
-    return {
-        name: 'John',
-        color: 'red',
-        position: 'Front-end developer',
-        state: 'New York'
-    };
-}
 
-var {name, state} = getObj();
-console.log(name);
-console.log(state);
-*/
 
-/*
+// function getObj() {
+//     return {
+//         name: 'John',
+//         color: 'red',
+//         position: 'Front-end developer',
+//         state: 'New York'
+//     };
+// }
+
+// var { name, state } = getObj();
+// console.log(name);
+// console.log(state);
+
+
+
 var people = [
     {
         firstName: 'Tom',
@@ -234,14 +233,14 @@ var people = [
         email: "bill@ukr.net"
     }
 ];
-*/
+
 
 //people.forEach( ({firstName}) => console.log(firstName));
 
-/*
+
 var [, Pete] = people;
-function logEmail({email}){
+function logEmail({ email }) {
     console.log(email)
 }
 logEmail(Pete);
-*/
+

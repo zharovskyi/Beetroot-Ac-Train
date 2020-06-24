@@ -1,2 +1,3 @@
-// import img from '../img';
-console.log("I am src/js/app.js");
+// import des from '../js/components/destruction';
+import './components/rest_spread';
+// console.log(des);

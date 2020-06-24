@@ -18,13 +18,15 @@
     <script type="text/babel">
       const rootElement = document.getElementById("root");
 
-// ----  .box, .box__circle, .box__shape, .box__lemon 
+      // ----  .box, .box__circle, .box__shape, .box__lemon
 
-      function Box(props) {
+      function Box({ style, className = "", shape = "", ...rest }) {
+        const shapeCls = shape ? `box__${shape}` : "";
         return (
           <div
-            className="box box__circle"
-            style={{ border: "3px solid tomato" }}
+            className={`box ${className} ${shapeCls}`.trim()}
+            style={{ border: "3px solid tomato", ...style }}
+            {...rest}
           >
             Box
           </div>
@@ -33,9 +35,10 @@
 
       const App = (
         <div className="wrap">
-            <Box />
-            <Box />
-          </div>
+          <Box shape="circle" style={{ backgroundColor: "pink" }} />
+          <Box shape="shape" style={{ backgroundColor: "green" }} />
+          <Box shape="lemon" style={{ backgroundColor: "yellow" }} />
+        </div>
       );
 
       ReactDOM.render(App, rootElement);

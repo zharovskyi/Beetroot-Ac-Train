@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Dynamicly generate components</title>
-    <link  rel="stylesheet"  href="../assets//css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets//css/bootstrap.min.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -12,26 +12,67 @@
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
+    <script src="../assets/js/babel.js"></script>
 
-    <!-- https://swapi.co/api/people/?format=json -->
+    <!-- https://swapi.dev/api/people/?format=json -->
     <script type="text/babel">
       const root = document.getElementById("root");
 
-      class App extends React.Component {
-        state = {
-          results: [],
-          filter: ""
+      const InputComponent = ({ filter, handleFilter }) => (
+        <input value={filter} onChange={handleFilter} />
+      );
+
+      const url = "https://swapi.dev/api/people";
+
+      const App = (props) => {
+        const [results, setResults] = React.useState([]);
+        const [filter, setFilter] = React.useState("");
+        const [loading, setLoading] = React.useState(false);
+        const [error, setError] = React.useState(false);
+
+        const handleFilter = ({ target }) => setFilter(target.value);
+
+        React.useEffect(() => {
+          const fetchData = async (url) => {
+            try {
+              const res = await fetch(url);
+              if (!res.ok) {
+                console.log("Unsuccessfully response");
+                setError(true);
+              }
+              const data = await res.json();
+              setResults(data.results);
+            } catch (err) {
+              setError(true);
+            } finally {
+              setLoading(false);
+            }
+          };
+          setLoading(true);
+          setError(false);
+          fetchData(url);
+        }, [url]);
+
+        const getResults = () => {
+          if (loading) return <h1>Loading... </h1>;
+          if (error) return <h1>:(</h1>;
+          let res = results;
+          if (filter) {
+            res = results.filter((item) =>
+              item.name.toLowerCase().includes(filter.toLocaleLowerCase())
+            );
+          }
+          return res.map((item) => <li key={item.name}>{item.name}</li>);
         };
 
-        render() {
-          return (
-            <div className="container">
-              <h1>People</h1>
-            </div>
-          );
-        }
-      }
+        return (
+          <div className="container">
+            <h1>People</h1>
+            <InputComponent filter={filter} handleFilter={handleFilter} />
+            <ul>{getResults()}</ul>
+          </div>
+        );
+      };
 
       ReactDOM.render(<App />, root);
     </script>

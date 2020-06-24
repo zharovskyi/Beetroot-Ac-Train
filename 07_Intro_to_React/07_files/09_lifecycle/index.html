@@ -20,17 +20,34 @@
       class App extends React.Component {
         state = { val: 0 };
 
+        static getDerivedStateFromProps(props, state) {
+          if (props.value % 5 === 0) {
+            return {
+              val: props.value,
+            };
+          }
+          return null;
+        }
+
+        update = () => {
+          ReactDOM.render(<App value={this.props.value + 1} />, root);
+        };
+
         render() {
           return (
             <div className="container pt-5">
+              <h1>State: {this.state.val}</h1>
               <button className="btn btn-success btn-lg" onClick={this.update}>
-                {this.state.val}
+                {this.props.value}
               </button>
             </div>
           );
         }
       }
 
+      App.defaultProps = {
+        value: 0,
+      };
       ReactDOM.render(<App />, root);
     </script>
   </body>

@@ -19,11 +19,29 @@
       const rootElement = document.getElementById("root");
 
       function App(props) {
-           
+        const [type, setType] = React.useState('')
+        const [val, setVal] = React.useState('')  
+        
+        const handleTextarea = e => setVal(e.target.value)
+
+        const update = e => {
+          navigator.clipboard.readText()
+          .then(text => {
+              const re = new RegExp(text, 'g');
+              const newVal = val.replace(re, st => st.toUpperCase())
+              setVal(newVal)
+          });  
+          setType(e.type)
+        }
+
         return (
           <div className="container">
-            <h1>Current Event</h1>
-            <textarea className="form-control" />
+            <h1>Current Event: {type}</h1>
+            <textarea 
+            value={val}
+            onChange={handleTextarea}
+            onCopy={update}
+            className="form-control" />
           </div>
         );
       }

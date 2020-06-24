@@ -5,28 +5,30 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
     <title>Conditionaly render</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
- </head>
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+  </head>
   <body>
     <div id="root"></div>
 
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
-   
-<script type="text/babel">
-  const rootElement = document.getElementById("root");
+    <script src="../assets/js/babel.js"></script>
 
-  const Message = ({ message }) => (
-     <div className="container">
-        <h1>{message}</h1>
-      </div>
-  );
+    <script type="text/babel">
+      const rootElement = document.getElementById("root");
 
-  ReactDOM.render(<Message message="Hi there!" />, rootElement);
-</script>
+      const Message = ({ message }) => (
+        <div className="container">
+          {message ? <h1>{message}</h1> : <h1>Loading...</h1>}
+        </div>
+      );
 
-
-</body>
+      Message.defaultProps = {
+        message: "",
+      };
+      // message="Hi there!"
+      ReactDOM.render(<Message message="Hi there!" />, rootElement);
+    </script>
+  </body>
 </html>

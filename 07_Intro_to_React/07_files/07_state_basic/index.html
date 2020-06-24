@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>State</title>
-    <link rel="stylesheet"  href="../assets/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
   </head>
   <body>
     <div id="root"></div>
@@ -12,18 +12,27 @@
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
-    
+    <script src="../assets/js/babel.js"></script>
+
     <script type="text/babel">
       const root = document.getElementById("root");
 
-      function App(props) {
-        return (
-          <div className="container">
-            <h1>Hello React</h1>
-          </div>
-        );
+      const Heart = () => <span>&hearts;</span>;
+
+      const Message = ({ children }) => <h1>{children}</h1>;
+
+      class App extends React.Component {
+        render() {
+          return (
+            <div className="container">
+              <Message>
+                I <Heart /> React
+              </Message>
+            </div>
+          );
+        }
       }
+
       ReactDOM.render(<App />, root);
     </script>
   </body>

@@ -15,7 +15,7 @@ export class Store {
     this._listeners.push(l);
   }
   emitChange() {
-    this._listeners.forEach((l) => l(this.state));
+    this._listeners.forEach((f) => f(this.state));
   }
   getState() {
     return this.state;

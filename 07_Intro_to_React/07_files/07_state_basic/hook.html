@@ -12,15 +12,20 @@
     <script src="../assets/js/react.development.js"></script>
     <script src="../assets/js/react-dom.development.js"></script>
     <script src="../assets/js/prop-types.js"></script>
-    <script  src="../assets/js/babel.js"></script>
-    
+    <script src="../assets/js/babel.js"></script>
+
     <script type="text/babel">
       const root = document.getElementById("root");
 
       function App(props) {
+        const [msg, setMsg] = React.useState("");
+
+        const update = ({ target }) => setMsg(target.value);
+
         return (
           <div className="container">
-            <h1>Hello React</h1>
+            <h1>Hello {msg}</h1>
+            <input onChange={update} />
           </div>
         );
       }

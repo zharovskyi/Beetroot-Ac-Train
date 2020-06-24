@@ -8,5 +8,8 @@ const spinner = document.getElementById('spinner');
 output.innerHTML = "Loading ...";
 //#endregion
 
-
+fetch(URL + "films")
+    .then(response => {
+        return response.json();
+    }).then(  => console.log(data))
 

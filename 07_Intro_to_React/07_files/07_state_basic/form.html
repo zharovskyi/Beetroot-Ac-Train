@@ -17,19 +17,25 @@
       const root = document.getElementById("root");
 
       function App(props) {
+        const [showPassword, setShowPassword] = React.useState(false)
+
+        const togglePassword = () => setShowPassword(!showPassword)
+
         return (
           <div className="container pt-3">
             <h1 className="mb-3">Users form</h1>
             <form action="#" className="col-md-4">
               <div className="form-group">
                 <label htmlFor="password">Password</label>
-                <input type="password" id="password" className="form-control" />
+                <input   type={showPassword ? "text" : "password"}
+                 id="password" className="form-control" />
               </div>
               <div className="form-check">
                 <input
+                  onChange={togglePassword}
                   className="form-check-input"
                   type="checkbox"
-                  value=""
+                  value={showPassword}
                   id="passwordCheck"
                 />
                 <label className="form-check-label" htmlFor="passwordCheck">

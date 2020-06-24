@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Dynamicly generate components</title>
+    <link rel="stylesheet" href="../assets//css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div id="root"></div>
+
+    <script src="../assets/js/react.development.js"></script>
+    <script src="../assets/js/react-dom.development.js"></script>
+    <script src="../assets/js/prop-types.js"></script>
+    <script src="../assets/js/babel.js"></script>
+
+    <!-- https://swapi.dev/api/people/?format=json -->
+    <script type="text/babel">
+      const root = document.getElementById("root");
+
+      const InputComponent = ({ filter, handleFilter }) => (
+        <input value={filter} onChange={handleFilter} />
+      );
+
+      class App extends React.Component {
+        state = {
+          results: [],
+          filter: "",
+          loading: false,
+          error: false,
+        };
+
+        handleFilter = ({ target }) => this.setState({ filter: target.value });
+
+        async componentDidMount() {
+          this.setState({ loading: true, error: false });
+          try {
+            const res = await fetch("https://swapi.dev/api/people");
+            if (!res.ok) {
+              console.log("Unsuccessfully response");
+              this.setState({ error: true });
+            }
+            const data = await res.json();
+            this.setState({ results: data.results });
+          } catch (err) {
+          } finally {
+            this.setState({ loading: false });
+          }
+        }
+
+        get body() {
+          let { results, loading, error, filter } = this.state;
+          if (loading) return <h1>Loading... </h1>;
+          if (error) return <h1>:(</h1>;
+
+          if (filter) {
+            results = results.filter((item) =>
+              item.name.toLowerCase().includes(filter.toLocaleLowerCase())
+            );
+          }
+
+          return results.map((item) => <li key={item.name}>{item.name}</li>);
+        }
+
+        render() {
+          const { filter } = this.state;
+          return (
+            <div className="container">
+              <h1>People</h1>
+              <InputComponent
+                filter={filter}
+                handleFilter={this.handleFilter}
+              />
+              <ul>{this.body}</ul>
+            </div>
+          );
+        }
+      }
+
+      ReactDOM.render(<App />, root);
+    </script>
+  </body>
+</html>
