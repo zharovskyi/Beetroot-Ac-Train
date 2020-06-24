@@ -1,85 +1,89 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Counter</title>
-    <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
-  </head>
-  <body>
-    <div id="root"></div>
 
-    <script src="../assets/js/react.development.js"></script>
-    <script src="../assets/js/react-dom.development.js"></script>
-    <script src="../assets/js/prop-types.js"></script>
-    <script src="../assets/js/babel.js"></script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Counter</title>
+  <link rel="stylesheet" href="../assets/css/bootstrap.min.css" />
+</head>
 
-    <script type="text/babel">
-      const root = document.getElementById("root");
+<body>
+  <div id="root"></div>
 
-      function App(props) {
-        const [counter, setCounter] = useState(0);
-        const [error, setError] = useState(null)
-        console.log(state)          
-//#region
-        const increment = () => {
-          setCounter(counter + 1)
-          setError(null)
-        }
-        const decrement = () => {
-          if(counter > 1) {
-            setCounter(counter - 1)
-          } else {
-              setError(`cannot be less then 1 😠`)
-          }
-        }
-        const reset = () => {
-          setCounter(0)
-          setError(null)
-        }
+  <script src="../assets/js/react.development.js"></script>
+  <script src="../assets/js/react-dom.development.js"></script>
+  <script src="../assets/js/prop-types.js"></script>
+  <script src="../assets/js/babel.js"></script>
 
-        return (
-          <div className="container  pt-3">
-            <h1 className="mb-3">Counter {counter}</h1>
+  <script type="text/babel">
+    const root = document.getElementById("root");
 
-            <button onClick={increment}  className="btn btn-primary mr-3">Increment</button>
-            <button onClick={decrement} className="btn btn-success  mr-3">Decrement</button>
-            <button disabled={counter === 0} onClick={reset} className="btn btn-danger">Reset</button>
-            {
-               error && <marquee direction="right" className="mt-3">
-                  <p onClick={() => setError(null)}>{error}</p>
-              </marquee>
-            }
-         
-            </div>
-        );
+    function App(props) {
+      const [counter, setCounter] = useState(0);
+      const [error, setError] = useState(null)
+      console.log(state)
+      //#region
+      const increment = () => {
+        setCounter(counter + 1)
+        setError(null)
       }
-      //#endregion
+      
+      const decrement = () => {
+        if (counter > 1) {
+          setCounter(counter - 1)
+        } else {
+          setError(`cannot be less then 1 😠`)
+        }
+      }
+      const reset = () => {
+        setCounter(0)
+        setError(null)
+      }
 
-        const state  = [];  // [0][0, fn],   [1][null, fn]
-        let callCount = -1;
+      return (
+        <div className="container  pt-3">
+          <h1 className="mb-3">Counter {counter}</h1>
 
-        function useState(initVal) {
-           const id = ++callCount;
-            
-           if(state[id]) {
-              return state[id];
-           }
-          const setVal = newVal => {
-              state[id][0] = newVal;
-              renderHook();
+          <button onClick={increment} className="btn btn-primary mr-3">Increment</button>
+          <button onClick={decrement} className="btn btn-success  mr-3">Decrement</button>
+          <button disabled={counter === 0} onClick={reset} className="btn btn-danger">Reset</button>
+          {
+            error && <marquee direction="right" className="mt-3">
+              <p onClick={() => setError(null)}>{error}</p>
+            </marquee>
           }
 
-          const tuple = [initVal, setVal];
-          state.push(tuple)
-          return tuple;
-        }
+        </div>
+      );
+    }
+    //#endregion
 
-             function renderHook() {
-                callCount = -1;
-                ReactDOM.render(<App />, root)
-             }
-             renderHook();
-    </script>
-  </body>
+    const state = [];  // [0][0, fn],   [1][null, fn]
+    let callCount = -1;
+
+    function useState(initVal) {
+      const id = ++callCount;
+
+      if (state[id]) {
+        return state[id];
+      }
+      const setVal = newVal => {
+        state[id][0] = newVal;
+        renderHook();
+      }
+
+      const tuple = [initVal, setVal];
+      state.push(tuple)
+      return tuple;
+    }
+
+    function renderHook() {
+      callCount = -1;
+      ReactDOM.render(<App />, root)
+    }
+    renderHook();
+  </script>
+</body>
+
 </html>
